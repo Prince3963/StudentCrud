@@ -1,0 +1,49 @@
+﻿@model IEnumerable<StudentManagement.DTOs.StudentDTO>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml"; // Update to actual layout
+}
+
+<h1>Student List</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+
+@if (ViewBag.Message != null)
+{
+    <div class="alert alert-warning">
+        @ViewBag.Message
+    </div>
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.First().studentName)</th>
+            <th>@Html.DisplayNameFor(model => model.First().studentAge)</th>
+            <th>@Html.DisplayNameFor(model => model.First().studentEmail)</th>
+            <th>@Html.DisplayNameFor(model => model.First().studentMobile)</th>
+            <th>@Html.DisplayNameFor(model => model.First().studentAddress)</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(m => item.studentName)</td>
+                <td>@Html.DisplayFor(m => item.studentAge)</td>
+                <td>@Html.DisplayFor(m => item.studentEmail)</td>
+                <td>@Html.DisplayFor(m => item.studentMobile)</td>
+                <td>@Html.DisplayFor(m => item.studentAddress)</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.studentID">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.studentID">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.studentID">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
