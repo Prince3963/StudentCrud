@@ -30,6 +30,7 @@ namespace StudentManagement.Services
                     return response;
                 }
 
+
                 var result = data.Select(s => new StudentDTO
                 {
                     studentID = s.studentID,
